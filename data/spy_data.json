@@ -1,0 +1,17 @@
+{
+    "profile": {
+        "name": "Laxit Thummar",
+        "alias": "Baba Yaga",
+        "dob": "14 Aug 2006",
+        "age": "19",
+        "location": "Rajkot, Gujarat",
+        "occupation": "Full Stack Mercenary",
+        "education": "B.Sc (IT) - Harivandana College"
+    },
+    "missions": [
+        "Infiltrate the Global Design Market\r",
+        "Master AI Integration Protocols\r",
+        "Build the Ultimate Digital Portfolio"
+    ],
+    "photo": "spy_profile.jpg"
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Times of Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper-color: #f4f0e6; /* Old paper off-white */
+            --ink-color: #2f2f2f;   /* Faded black */
+            --border-color: #4a4a4a;
+            --accent-red: #8b0000;  /* For "Late Edition" stamps */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e0dcd0; /* Background behind the paper */
+            color: var(--ink-color);
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* The Main Newspaper Sheet */
+        .newspaper-container {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 1100px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border: 1px solid #d4cfc0;
+        }
+
+        /* --- Header / Masthead --- */
+        .meta-header {
+            border-bottom: 2px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .masthead {
+            text-align: center;
+            font-family: 'UnifrakturMaguntia', cursive; /* Old English Style */
+            font-size: 5rem;
+            line-height: 1;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 4px double var(--border-color);
+        }
+
+        .sub-masthead {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Main Hero Section (Most Wanted) --- */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            border-bottom: 3px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: inline-block;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            border: 1px solid var(--border-color);
+            padding: 5px;
+            background: #fff;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            /* Makes the user photo look vintage */
+            filter: grayscale(100%) contrast(120%) sepia(30%); 
+            display: block;
+        }
+
+        .caption {
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* --- Services Section (Columns) --- */
+        .section-header {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .service-col {
+            border-right: 1px solid #ccc;
+            padding-right: 15px;
+        }
+
+        .service-col:last-child {
+            border-right: none;
+        }
+
+        .service-col h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 0;
+            border-bottom: 2px solid var(--ink-color);
+            padding-bottom: 5px;
+        }
+
+        .service-col p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* --- Filler News / Layout --- */
+        .secondary-news {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            border-top: 3px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .news-item h4 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+        }
+
+        .drop-cap::first-letter {
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 8px;
+            font-weight: bold;
+            font-family: 'UnifrakturMaguntia', cursive;
+        }
+
+        /* --- Archive / Document Section --- */
+        .archive-section {
+            margin-top: 50px;
+            padding: 30px;
+            border: 4px double var(--border-color);
+            text-align: center;
+            background-color: #e8e4c9; /* Slightly darker patch */
+        }
+
+        .archive-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 30px;
+            background-color: var(--ink-color);
+            color: var(--paper-color);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border: 2px solid var(--ink-color);
+            transition: all 0.3s ease;
+        }
+
+        .archive-btn:hover {
+            background-color: transparent;
+            color: var(--ink-color);
+            cursor: pointer;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .masthead { font-size: 3rem; }
+            .hero-section { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-col { border-right: none; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+            .secondary-news { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="newspaper-container">
+        <div class="meta-header">
+            <span>Vol. 01 — No. 1</span>
+            <span>Est. 2026, India</span>
+            <span>Price: One Like</span>
+        </div>
+
+        <h1 class="masthead">The Times of Designer</h1>
+        <div class="sub-masthead">"All the Design That's Fit to Print"</div>
+
+        <div class="hero-section">
+            <div class="hero-text">
+                <h1>MOST WANTED DESIGNER</h1>
+                <h2>Creative Visionary Spotted Building Webs</h2>
+                <div class="intro-text">
+                    <p><span class="drop-cap">R</span>eports are coming in from all corners of the industry regarding a highly skilled individual currently operating in the digital sector. Witnesses describe a versatile professional capable of bridging the gap between aesthetics and functionality.</p>
+                    <p><strong>DETAILS:</strong> Passionate about pixel-perfect layouts and clean code. Known to work late hours fueled by coffee and creativity. If found, do not approach with boring projects.</p>
+                    <p><strong>LOCATION:</strong> Last seen crafting digital experiences in India.</p>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Portrait">
+                <div class="caption">Fig 1. The Designer in their natural habitat.</div>
+            </div>
+        </div>
+
+        <div class="section-header">— CURRENT OPERATIONS —</div>
+        
+        <div class="services-grid">
+            <div class="service-col">
+                <h3>UI & UX Design</h3>
+                <p>Creating intuitive interfaces that users love. Focusing on wireframing, prototyping, and user research to ensure seamless experiences across all devices.</p>
+            </div>
+            <div class="service-col">
+                <h3>Social Media</h3>
+                <p>Designing thumb-stopping visuals for Instagram, LinkedIn, and Twitter. Strategy and content creation that engages audiences and builds brand loyalty.</p>
+            </div>
+            <div class="service-col">
+                <h3>Digital Marketing</h3>
+                <p>Utilizing SEO, SEM, and analytics to drive traffic. Understanding the algorithms of the modern web to ensure maximum visibility for clients.</p>
+            </div>
+            <div class="service-col">
+                <h3>Full Stack Dev</h3>
+                <p>Building the backbone of the web. proficiency in HTML, CSS, JavaScript, React, and backend technologies. Turning designs into functional reality.</p>
+            </div>
+        </div>
+
+        <div class="secondary-news">
+            <div class="news-item">
+                <h4>LATEST TECHNOLOGY</h4>
+                <p>The world of web development changes daily. New frameworks are rising, while old ones gather digital dust. Our designer remains on the cutting edge.</p>
+            </div>
+            <div class="news-item">
+                <h4>DESIGN TRENDS OF THE DECADE</h4>
+                <p>From minimalism to maximalism, the trends shift. However, good taste remains timeless. This portfolio stands as a testament to the enduring power of classic typography mixed with modern layout techniques.</p>
+            </div>
+        </div>
+
+        <div class="archive-section">
+            <h3>OFFICIAL ARCHIVES</h3>
+            <p>Access the classified documents including Resume, CV, and Certifications.</p>
+            <a href="#" class="archive-btn">OPEN DOSSIER</a>
+        </div>
+
+        <div class="meta-header" style="margin-top: 20px; border-top: 2px solid #4a4a4a; border-bottom: none; justify-content: center;">
+            &copy; 2026 The Times of Designer. All Rights Reserved.
+        </div>
+
+    </div>
+
+</body>
+</html>
